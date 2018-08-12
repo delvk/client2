@@ -9,11 +9,24 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "jake-cordova-plugin-restful": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {},
-  "modules": [],
+  "modules": [
+    {
+      "file": "plugins/jake-cordova-plugin-restful/www/PluginRESTful.js",
+      "id": "jake-cordova-plugin-restful.PluginRESTful",
+      "pluginId": "jake-cordova-plugin-restful",
+      "clobbers": [
+        "cordova.plugins.PluginRESTful"
+      ]
+    }
+  ],
   "plugin_metadata": {
-    "cordova-plugin-whitelist": "1.3.3"
+    "cordova-plugin-whitelist": "1.3.3",
+    "jake-cordova-plugin-restful": "0.0.1"
   }
 }

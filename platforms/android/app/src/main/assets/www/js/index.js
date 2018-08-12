@@ -44,3 +44,12 @@ var app = {
 };
 
 app.initialize();
+var url="http://192.168.1.101:8080/user/login";
+document.getElementById("btn").addEventListener("click",function(){
+    cordova.plugins.PluginRESTful.login(url,"admin@admin.com","1",function(value){
+        alert(value.token)
+            
+    },function(err) {
+        alert("error: "+err);
+    });
+})

@@ -6,5 +6,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "jake-cordova-plugin-restful": {
+    "source": {
+      "type": "local",
+      "path": "/home/jake/Project/cordova/client2/node_modules/jaek-cordova-plugin-restful"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
