@@ -25,6 +25,8 @@
     </platform>
     <plugin name="jake-cordova-plugin-restful" spec="./custom_plugins/PluginRESTful" />
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <engine name="browser" spec="^5.0.4" />
     <engine name="android" spec="^7.0.0" />
 </widget>

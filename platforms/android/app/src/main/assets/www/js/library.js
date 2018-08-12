@@ -22,7 +22,9 @@ document.addEventListener("deviceready", function () {
         btn_del.className = "btn";
         btn_del.innerHTML = "Delete";
         btn_del.onclick = function () {
-            delete_img(id);
+            if (confirm("Are you sure you want to delete this image?"))
+                delete_img(id);
+            return;
         }
 
         btn_download = document.createElement("btn");
@@ -104,14 +106,15 @@ document.addEventListener("deviceready", function () {
 
             function success(value) {
                 for (i = 0; i < value.length; i++) {
-                    
-                    
-                    addImage(value[i].id, link+value[i].src);
+
+
+                    addImage(value[i].id, link + value[i].src);
                 }
             }
-            function fail(err){
-                console.log("error "+ err);
-                
+
+            function fail(err) {
+                console.log("error " + err);
+
             }
         }
     }
@@ -125,10 +128,20 @@ document.addEventListener("deviceready", function () {
             function create(imgLink) {
                 var image = document.getElementById('my_img');
                 image.src = imgLink;
-                var action = "post";
-                getFileEntry(imgLink, action);
+                var btn_confirm = document.createElement("button");
+                btn_confirm.innerHTML = "Confirm upload"
+                btn_confirm.onclick = function () {
+                    if (confirm("Are you sure you want to upload this picture?")) {
+                        var action = "post";
+                        getFileEntry(imgLink, action);
+
+                    }
+                    btn_confirm.remove();
+                    image.remove();
+                }
+                image.parentElement.appendChild(btn_confirm);
             }
-        } else alert("Not support this platform");
+        } else alert("Not support" + device.platform + " platform");
     }
 
     function change_img(id) {
@@ -140,23 +153,44 @@ document.addEventListener("deviceready", function () {
             function chooseFileUpdate(imgLink) {
                 var image = document.getElementById('my_img');
                 image.src = imgLink;
-                var action = "put";
-                getFileEntry(imgLink, action, id);
+                var btn_confirm = document.createElement("button");
+                btn_confirm.innerHTML = "Replace"
+                btn_confirm.onclick = function () {
+                    if (confirm("Replace?")) {
+                        var action = "put";
+                        getFileEntry(imgLink, action, id);
+                        btn_confirm.remove();
+                        return;
+                    }
+                    btn_confirm.remove();
+                    image.remove();
+                }
+                image.parentElement.appendChild(btn_confirm);
             }
-        } else alert("Not support this platform");
+        } else alert("Not support " + device.platform + "platform");
     }
 
     function delete_img(id) {
         var temp = link + id;
-        alert(temp);
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("DELETE", temp, true);
-        xhttp.setRequestHeader("authorization", "bearer " + token);
-        xhttp.send();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                alert("Your image have been deleted");
+
+        if (device.platform == "Android") {
+            cordova.plugins.PluginRESTful.delete(temp, token, success, function(){
+                alert("Cannot delete this image");
+            });
+            function success(value) {
+                alert(value);
                 location.reload();
+            }
+        } else {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("DELETE", temp, true);
+            xhttp.setRequestHeader("authorization", "bearer " + token);
+            xhttp.send();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("Your image have been deleted");
+                    location.reload();
+                }
             }
         }
     }
@@ -229,24 +263,4 @@ document.addEventListener("deviceready", function () {
     // 5 = FileTransferError.NOT_MODIFIED_ERR
 });
 
-
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
 // Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}

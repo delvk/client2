@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+}
+
+img {
+    position: relative;
+    width: 100%;
+}
+
+.holder {
+    position: relative;
+    margin: 10px 5px 0px 5px;
+    width: 23.99%;
+}
+.holder .btn_holder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    padding: 20%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.holder .btn:hover {
+    background-color: black;
+}
+
+.btn {
+    background-color: #555;
+    color: white;
+    padding: 12% 24%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5%;
+    min-width: 100%;
+    text-align: center;
+    margin-bottom: 20%;
+    z-index: 1;
+}
