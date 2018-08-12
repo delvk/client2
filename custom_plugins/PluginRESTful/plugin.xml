@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="jake-cordova-plugin-restful" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>PluginRESTful</name>
+    <js-module name="PluginRESTful" src="www/PluginRESTful.js">
+        <clobbers target="cordova.plugins.PluginRESTful" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PluginRESTful" >
+                <param name="android-package" value="org.apache.cordova.plugin.PluginRESTful"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/PluginRESTful.java" target-dir="org/apache/cordova/plugin"/>
+        	<info>
+                    Jake restful plugin has been deployed.
+            </info>
+    </platform>
+</plugin>
