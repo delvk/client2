@@ -103,12 +103,15 @@ document.addEventListener("deviceready", function () {
             cordova.plugins.PluginRESTful.load(link, token, success, fail);
 
             function success(value) {
-                for (i = 0; i < value.length(); i++) {
-                    console.log(value[i].id);
-                    console.log(link+value[i].src);
+                for (i = 0; i < value.length; i++) {
                     
-                    //addImage(value[i].id, link+value[i].src);
+                    
+                    addImage(value[i].id, link+value[i].src);
                 }
+            }
+            function fail(err){
+                console.log("error "+ err);
+                
             }
         }
     }

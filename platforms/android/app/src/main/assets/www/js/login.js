@@ -16,11 +16,31 @@ document.getElementById("btn-demo").addEventListener("click", function () {
 function login(url, email, password) {
     url += "/user/login";
     var token;
-    cordova.plugins.PluginRESTful.login(url, "admin@admin.com", "1", function (value) {
-        token = value.token;
-        localStorage.setItem("token", token);
-        window.location.replace("library.html");
-    }, function (err) {
-        alert(err);
-    });
+    if (device.platform == "Android") {
+        cordova.plugins.PluginRESTful.login(url, email, password, function (value) {
+            token = value.token;
+            localStorage.setItem("token", token);
+            window.location.replace("library.html");
+        }, function (err) {
+            alert(err);
+        });
+    } else {
+        var xhttp = new XMLHttpRequest();
+        var JSONform = '{"email":"' + email + '","password":"' + password + '"}';
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSONform);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var res = JSON.parse(this.response);
+                token = res.token;
+                localStorage.setItem("token", token);
+                window.location.replace("library.html");
+            }
+        };
+    }
+}
+
+function goSignup() {
+    window.location.replace("signup.html");
 }
