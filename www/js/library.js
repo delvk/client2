@@ -106,8 +106,6 @@ document.addEventListener("deviceready", function () {
 
             function success(value) {
                 for (i = 0; i < value.length; i++) {
-
-
                     addImage(value[i].id, link + value[i].src);
                 }
             }

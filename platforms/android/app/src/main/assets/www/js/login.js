@@ -10,7 +10,10 @@ document.getElementById("btn-login").addEventListener("click", function () {
     }
 });
 document.getElementById("btn-demo").addEventListener("click", function () {
+    console.log("cho bill");
+    
     login(url, "admin@admin.com", "1");
+
 });
 
 function login(url, email, password) {

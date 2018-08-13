@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/jake-cordova-plugin-restful/www/PluginRESTful.js",
-        "id": "jake-cordova-plugin-restful.PluginRESTful",
-        "pluginId": "jake-cordova-plugin-restful",
-        "clobbers": [
-            "cordova.plugins.PluginRESTful"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-device/www/device.js",
         "id": "cordova-plugin-device.device",
         "pluginId": "cordova-plugin-device",
@@ -254,17 +246,25 @@ module.exports = [
         "id": "cordova-plugin-camera.CameraProxy",
         "pluginId": "cordova-plugin-camera",
         "runs": true
+    },
+    {
+        "file": "plugins/jake-cordova-plugin-restful/www/PluginRESTful.js",
+        "id": "jake-cordova-plugin-restful.PluginRESTful",
+        "pluginId": "jake-cordova-plugin-restful",
+        "clobbers": [
+            "cordova.plugins.PluginRESTful"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "cordova-plugin-whitelist": "1.3.3",
-    "jake-cordova-plugin-restful": "0.0.1",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-file-transfer": "1.7.1",
-    "cordova-plugin-camera": "4.0.3"
+    "cordova-plugin-camera": "4.0.3",
+    "jake-cordova-plugin-restful": "0.0.1"
 }
 // BOTTOM OF METADATA
 });

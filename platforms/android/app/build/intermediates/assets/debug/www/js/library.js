@@ -27,15 +27,15 @@ document.addEventListener("deviceready", function () {
             return;
         }
 
-        btn_download = document.createElement("btn");
-        btn_download.className = "btn";
-        btn_download.innerHTML = "Download";
+        // btn_download = document.createElement("btn");
+        // btn_download.className = "btn";
+        // btn_download.innerHTML = "Download";
 
         btn_cancel = document.createElement("btn");
         btn_cancel.className = "btn";
         btn_cancel.innerHTML = "Cancel";
 
-        btn_holder.appendChild(btn_download);
+        // btn_holder.appendChild(btn_download);
         btn_holder.appendChild(btn_change);
         btn_holder.appendChild(btn_del);
         btn_holder.appendChild(btn_cancel);
@@ -106,8 +106,6 @@ document.addEventListener("deviceready", function () {
 
             function success(value) {
                 for (i = 0; i < value.length; i++) {
-
-
                     addImage(value[i].id, link + value[i].src);
                 }
             }

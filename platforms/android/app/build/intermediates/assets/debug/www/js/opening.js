@@ -1,5 +1,5 @@
 document.addEventListener("deviceready", function () {
-    var SERVER = ["localhost", "192.168.1.101"];
+    var SERVER = ["localhost", "192.168.9.108"];
     var PORT = [8080];
     const prefix_http = "http://";
     var url;

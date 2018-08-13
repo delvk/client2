@@ -7,11 +7,11 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="PluginRESTful" >
-                <param name="android-package" value="org.apache.cordova.plugin.PluginRESTful"/>
+                <param name="android-package" value="apache.cordova.plugin.PluginRESTful"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/PluginRESTful.java" target-dir="org/apache/cordova/plugin"/>
+        <source-file src="src/android/PluginRESTful.java" target-dir="apache/cordova/plugin"/>
         	<info>
                     Jake restful plugin has been deployed.
             </info>

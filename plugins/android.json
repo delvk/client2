@@ -7,10 +7,7 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
-    "jake-cordova-plugin-restful": {
+    "cordova-plugin-camera": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-device": {
@@ -19,7 +16,10 @@
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-camera": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "jake-cordova-plugin-restful": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
