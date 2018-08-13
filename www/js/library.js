@@ -1,6 +1,22 @@
 var link = localStorage.getItem("url") + "/image/library/";
 var token = localStorage.getItem("token");
-document.addEventListener("deviceready", function () {
+
+function onLoad() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+// device APIs are available
+
+// Handle the back button
+//
+function onBackKeyDown() {
+    console.log("Hello");
+    
+    window.location.replace("login.html");
+}
+
+function onDeviceReady() {
+    document.addEventListener("backbutton", onBackKeyDown, false);
     load_img_list(link, token) // Load image first
     function addImage(id, src) { //function: add img in UI
 
@@ -148,7 +164,7 @@ document.addEventListener("deviceready", function () {
                 }
                 image.parentElement.appendChild(btn_confirm);
             }
-        } else alert("Not support" + device.platform + " platform");
+        } else alert("Not support " + device.platform + " platform");
     }
 
     function change_img(id) {
@@ -176,7 +192,7 @@ document.addEventListener("deviceready", function () {
                 }
                 image.parentElement.appendChild(btn_confirm);
             }
-        } else alert("Not support " + device.platform + "platform");
+        } else alert("Not support " + device.platform + " platform");
     }
 
     function delete_img(id) {
@@ -271,6 +287,4 @@ document.addEventListener("deviceready", function () {
     // 3 = FileTransferError.CONNECTION_ERR
     // 4 = FileTransferError.ABORT_ERR
     // 5 = FileTransferError.NOT_MODIFIED_ERR
-});
-
-// Close the dropdown if the user clicks outside of it
+};

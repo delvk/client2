@@ -2,7 +2,6 @@
     margin-top: 20px;
     margin-left: 10px;
     min-width: 100%;
-    z-index: 999;
 }
 
 .link{
@@ -38,6 +37,7 @@
     border-radius: 5px;
     text-align: center;
     display: none;
+    z-index: 999;
 }
 
 .btn:hover {

@@ -1,15 +1,31 @@
 var link = localStorage.getItem("url") + "/image/library/";
 var token = localStorage.getItem("token");
-document.addEventListener("deviceready", function () {
+
+function onLoad() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+// device APIs are available
+
+// Handle the back button
+//
+function onBackKeyDown() {
+    console.log("Hello");
+    
+    window.location.replace("login.html");
+}
+
+function onDeviceReady() {
+    document.addEventListener("backbutton", onBackKeyDown, false);
     load_img_list(link, token) // Load image first
     function addImage(id, src) { //function: add img in UI
 
-        var album=document.getElementById("album");
-        var div=document.createElement("div");
-        div.className="col-6 col-sm-3";
-        var img=document.createElement("img");
-        img.src=src;
-        img.className="img-thumbnail";
+        var album = document.getElementById("album");
+        var div = document.createElement("div");
+        div.className = "col-6 col-sm-3";
+        var img = document.createElement("img");
+        img.src = src;
+        img.className = "img-thumbnail";
         div.appendChild(img);
         album.appendChild(div);
         // var holder = document.createElement("div");
@@ -68,8 +84,6 @@ document.addEventListener("deviceready", function () {
             }
 
         }
-        document.body.appendChild(holder);
-        console.log(src);
 
     }
     document.getElementById("create-btn").addEventListener("click", function () { // Create image
@@ -133,10 +147,12 @@ document.addEventListener("deviceready", function () {
             });
 
             function create(imgLink) {
-                var image = document.getElementById('my_img');
+                var image = document.getElementById('src_img');
                 image.src = imgLink;
                 var btn_confirm = document.createElement("button");
-                btn_confirm.innerHTML = "Confirm upload"
+                btn_confirm.className = "btn btn-info";
+                btn_confirm.innerHTML = "Confirm";
+                btn_confirm.style = "margin-left:0";
                 btn_confirm.onclick = function () {
                     if (confirm("Are you sure you want to upload this picture?")) {
                         var action = "post";
@@ -148,7 +164,7 @@ document.addEventListener("deviceready", function () {
                 }
                 image.parentElement.appendChild(btn_confirm);
             }
-        } else alert("Not support" + device.platform + " platform");
+        } else alert("Not support " + device.platform + " platform");
     }
 
     function change_img(id) {
@@ -158,9 +174,11 @@ document.addEventListener("deviceready", function () {
             });
 
             function chooseFileUpdate(imgLink) {
-                var image = document.getElementById('my_img');
+                var image = document.getElementById('src_img');
                 image.src = imgLink;
                 var btn_confirm = document.createElement("button");
+                btn_confirm.className = "btn btn-info";
+                btn_confirm.style = "margin-left:0";
                 btn_confirm.innerHTML = "Replace"
                 btn_confirm.onclick = function () {
                     if (confirm("Replace?")) {
@@ -174,16 +192,17 @@ document.addEventListener("deviceready", function () {
                 }
                 image.parentElement.appendChild(btn_confirm);
             }
-        } else alert("Not support " + device.platform + "platform");
+        } else alert("Not support " + device.platform + " platform");
     }
 
     function delete_img(id) {
         var temp = link + id;
 
         if (device.platform == "Android") {
-            cordova.plugins.PluginRESTful.delete(temp, token, success, function(){
+            cordova.plugins.PluginRESTful.delete(temp, token, success, function () {
                 alert("Cannot delete this image");
             });
+
             function success(value) {
                 alert(value);
                 location.reload();
@@ -261,13 +280,11 @@ document.addEventListener("deviceready", function () {
     };
 
     function error(err) {
-        alert("Something went wrong");
+        alert("No image chosen");
     }
     // 1 = FileTransferError.FILE_NOT_FOUND_ERR
     // 2 = FileTransferError.INVALID_URL_ERR
     // 3 = FileTransferError.CONNECTION_ERR
     // 4 = FileTransferError.ABORT_ERR
     // 5 = FileTransferError.NOT_MODIFIED_ERR
-});
-
-// Close the dropdown if the user clicks outside of it
+};

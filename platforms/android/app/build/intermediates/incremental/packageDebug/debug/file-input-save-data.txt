@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Aug 13 16:39:25 ICT 2018
+#Mon Aug 13 17:27:41 ICT 2018
 60.set=ASSET
 52.set=ASSET
 53.base=/home/jake/Project/cordova/client2/platforms/android/app/build/intermediates/assets/debug
