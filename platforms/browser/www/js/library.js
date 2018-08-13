@@ -3,23 +3,32 @@ var token = localStorage.getItem("token");
 document.addEventListener("deviceready", function () {
     load_img_list(link, token) // Load image first
     function addImage(id, src) { //function: add img in UI
-        var holder = document.createElement("div");
-        holder.className = "holder";
-        var img = document.createElement("img");
-        img.src = src;
-        holder.appendChild(img);
+
+        var album=document.getElementById("album");
+        var div=document.createElement("div");
+        div.className="col-6 col-sm-3";
+        var img=document.createElement("img");
+        img.src=src;
+        img.className="img-thumbnail";
+        div.appendChild(img);
+        album.appendChild(div);
+        // var holder = document.createElement("div");
+        // holder.className = "holder";
+        // var img = document.createElement("img");
+        // img.src = src;
+        // holder.appendChild(img);
         var btn_holder = document.createElement("div");
         btn_holder.className = "btn_holder";
         var btn_change, btn_del, btn_download, btn_cancel;
         btn_change = document.createElement("btn");
-        btn_change.className = "btn";
+        btn_change.className = "btn btn-info";
         btn_change.innerHTML = "Change";
         btn_change.onclick = function () {
             change_img(id);
         }
 
         btn_del = document.createElement("btn");
-        btn_del.className = "btn";
+        btn_del.className = "btn btn-info";
         btn_del.innerHTML = "Delete";
         btn_del.onclick = function () {
             if (confirm("Are you sure you want to delete this image?"))
@@ -27,12 +36,12 @@ document.addEventListener("deviceready", function () {
             return;
         }
 
-        // btn_download = document.createElement("btn");
-        // btn_download.className = "btn";
-        // btn_download.innerHTML = "Download";
+        btn_download = document.createElement("btn");
+        btn_download.className = "btn btn-info";
+        btn_download.innerHTML = "Download";
 
         btn_cancel = document.createElement("btn");
-        btn_cancel.className = "btn";
+        btn_cancel.className = "btn btn-info";
         btn_cancel.innerHTML = "Cancel";
 
         // btn_holder.appendChild(btn_download);
@@ -40,8 +49,8 @@ document.addEventListener("deviceready", function () {
         btn_holder.appendChild(btn_del);
         btn_holder.appendChild(btn_cancel);
 
-        holder.appendChild(btn_holder);
-        holder.onclick = function () {
+        div.appendChild(btn_holder);
+        div.onclick = function () {
             toggle(this);
         }
 

@@ -1,0 +1,45 @@
+.btn-info, .link{
+    margin-top: 20px;
+    margin-left: 10px;
+    min-width: 100%;
+}
+
+.link{
+    background-color: white;
+    color: black;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#album{
+    margin-top: 20px;
+}
+
+.col-sm-3{
+    /* border: 1px solid black; */
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.row{
+    /* border: 1px solid black; */
+}
+.btn_holder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    padding: 20%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+    z-index: 999;
+}
+
+.btn:hover {
+    background-color: black;
+}
